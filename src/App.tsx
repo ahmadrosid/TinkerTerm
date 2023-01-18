@@ -5,6 +5,7 @@ import { appDataDir } from '@tauri-apps/api/path';
 
 import loader from '@monaco-editor/loader';
 import * as monaco from 'monaco-editor';
+import { KeyCode, KeyMod } from "monaco-editor"
 
 loader.config({ monaco });
 
@@ -33,6 +34,17 @@ function App() {
     setFolder(`${selected}`)
   }
 
+  const executeAction: monaco.editor.IActionDescriptor = {
+    id: "run-code",
+    label: "Run Code",
+    contextMenuOrder: 0,
+    contextMenuGroupId: "navigation",
+    keybindings: [
+      KeyMod.CtrlCmd | KeyCode.Enter,
+    ],
+    run: runTinker,
+  }
+
   useLayoutEffect(() => {
     if (monacoEditor.current !== null) return;
 
@@ -41,6 +53,7 @@ function App() {
       if (wrapper && monacoEditor.current === null) {
         wrapper.style.minHeight = "800px";
         monaco.editor.defineTheme("nord", nordTheme as monaco.editor.IStandaloneThemeData);
+        monaco.editor.addEditorAction(executeAction)
         monaco.languages.register({ id: 'php' })
         monaco.languages.setMonarchTokensProvider('php', phpTokenizer as monaco.languages.IMonarchLanguage);
 
