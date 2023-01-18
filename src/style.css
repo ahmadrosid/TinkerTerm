@@ -26,7 +26,7 @@
 }
 
 .container nav {
-  border-right: 1px solid #383838;
+  border-right: 1px solid #3B4252;
 }
 
 input,
@@ -56,6 +56,12 @@ button {
   outline: none;
 }
 
+pre {
+  font-size: 14px;
+  overflow: auto;
+  max-height: 95vh;
+}
+
 #greet-input {
   margin-right: 5px;
   min-width: 300px;
@@ -64,7 +70,8 @@ button {
 @media (prefers-color-scheme: dark) {
   :root {
     color: #f6f6f6;
-    background-color: #1E1E1E;
+    background-color: #2E3440;
+    color-scheme: dark;
   }
 
   a:hover {
@@ -76,4 +83,5 @@ button {
     color: #ffffff;
     background-color: #0f0f0f98;
   }
+
 }

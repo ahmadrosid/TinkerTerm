@@ -11,7 +11,17 @@
   },
   "tauri": {
     "allowlist": {
-      "all": true
+      "all": true,
+      "shell": {
+        "all": true,
+        "scope": [
+          {
+            "name": "php",
+            "cmd": "php",
+            "args": ["artisan", { "validator": "\\S+" }]
+          }
+        ]
+      }
     },
     "bundle": {
       "active": true,
@@ -28,7 +38,7 @@
         "icons/icon.icns",
         "icons/icon.ico"
       ],
-      "identifier": "com.tauri.dev",
+      "identifier": "com.ahmadrosid.tinkerterm",
       "longDescription": "",
       "macOS": {
         "entitlements": null,
@@ -60,6 +70,7 @@
         "title": "TinkerTerm",
         "width": 800
       }
-    ]
+    ],
+    "macOSPrivateApi": true
   }
 }

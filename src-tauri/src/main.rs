@@ -16,7 +16,11 @@ fn greet(name: &str) -> String {
 #[tauri::command]
 fn tinker_run(code: &str, path: String) -> String {
     let path = PathBuf::from(path);
-    tinker::run(code.to_string(), path)
+    let res = tinker::run(code.to_string(), path);
+    match res {
+        Ok(result) => result,
+        Err(err) => err.to_string()
+    }
 }
 
 fn main() {
