@@ -19,19 +19,23 @@ fn tinker_run(code: &str, path: String) -> String {
     let res = tinker::run(code.to_string(), path);
     match res {
         Ok(result) => result,
-        Err(err) => err.to_string()
+        Err(err) => err.to_string(),
     }
 }
 
 fn main() {
+    let debug = false;
     use tauri::Manager;
     tauri::Builder::default()
-        .setup(|app| {
-            #[cfg(debug_assertions)] // only include this code on debug builds
-            {
-                // let window = app.get_window("main").unwrap();
-                // window.open_devtools();
-                // window.close_devtools();
+        .setup(move |app| {
+            if debug {
+                // only include this code on debug builds
+                #[cfg(debug_assertions)] 
+                {
+                    let window = app.get_window("main").unwrap();
+                    window.open_devtools();
+                    window.close_devtools();
+                }
             }
             Ok(())
         })
