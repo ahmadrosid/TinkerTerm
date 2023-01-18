@@ -4,7 +4,7 @@
     <img src="TinkerTerm.png" alt="TinkerTerm" width="200"/>
 </p>
 
-Introducing TinkerTerm - the ultimate desktop application for interacting with your Laravel projects. This powerful tool allows you to speed up your Laravel development with an intuitive and user-friendly interface for executing arbitrary PHP code, debugging, and exploring your application's code and data.
+TinkerTerm is the desktop application for interacting with your Laravel projects. This powerful tool allows you to speed up your Laravel development with an intuitive and user-friendly interface for executing arbitrary PHP code, debugging, and exploring your data.
 
 Some of the features of TinkerTerm:
 - 😃 Intuitive and user-friendly interface
