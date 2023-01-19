@@ -10,9 +10,16 @@ mod tinker;
 mod php;
 
 #[tauri::command]
-fn tinker_run(code: &str, path: &str, env: &str) -> String {
+fn tinker_run(app_handle: tauri::AppHandle, code: String, path: String) -> String {
+    let mut app_dir = app_handle.path_resolver().app_cache_dir().unwrap();
+    app_dir.push("config");
+    app_dir.push("php-bin.conf");
+    let res = tauri::api::file::read_string(app_dir);
+    if res.is_err() {
+        return "Please select your PHP binary!".to_string();
+    }
     let path = PathBuf::from(path);
-    match tinker::run(code.to_string(), path, env) {
+    match tinker::run(code.to_string(), path, res.unwrap()) {
         Ok(res) => res,
         Err(err) => err.to_string()
     }
