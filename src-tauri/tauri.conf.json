@@ -16,7 +16,7 @@
         "all": true,
         "readFile": true,
         "writeFile": true,
-        "scope": ["$APPCONFIG/*"]
+        "scope": ["$APPCACHE/*", "$APPCACHE/config","$APPCACHE/config/php-bin.conf"]
       },
       "path": {
         "all": true
