@@ -22,11 +22,15 @@ function App() {
   const monacoEditor = useRef<monaco.editor.IStandaloneCodeEditor | null>(null);
   const [res, setRes] = useState<string>("");
   const [folder, setFolder] = useState<string>("/Users/ahmadrosid/bitbucket.com/splade");
-  const [env, writeFileContent] = useLocalStorage('app.conf');
+  const [env, writeFileContent] = useLocalStorage('config/php-bin.conf');
   const [isOpenDialog, setIsOpenDialog] = useState<boolean>(false);
   const [phpBinOptions, setPhpBinOptions] = useState<string[]>([]);
 
   async function runTinker() {
+    if (env === "") {
+      setRes("Please set php bin env!");
+      return
+    }
     setRes("");
     try {
       let res = await invoke('tinker_run', { code: monacoEditor.current?.getValue(), path: folder, env: env }) as string;
@@ -128,9 +132,9 @@ function App() {
           <div id="editor"></div>
           <div className="column-3" style={{ paddingLeft: "1em", overflow: "auto" }}>
             <div>
-              {!env && <p>Please select your php binary!</p>}
+              {!env && <p>Please select your PHP binary.</p>}
               {env && <p>PHP Bin: {env}</p>}
-              <p>{ "Project folder: " + folder || "Please select input folder!"}</p>
+              <p>{ "Project folder: " + folder || "Please select your project folder!"}</p>
             </div>
             <p>
               <pre>{res}</pre>
