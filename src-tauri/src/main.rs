@@ -4,23 +4,24 @@
 )]
 
 use std::path::PathBuf;
+use std::env;
 
 mod tinker;
+mod php;
 
-// Learn more about Tauri commands at https://tauri.app/v1/guides/features/command
 #[tauri::command]
-fn greet(name: &str) -> String {
-    format!("Hello, {}! You've been greeted from Rust!", name)
+fn tinker_run(code: &str, path: &str, env: &str) -> String {
+    let path = PathBuf::from(path);
+    match tinker::run(code.to_string(), path, env) {
+        Ok(res) => res,
+        Err(err) => err.to_string()
+    }
 }
 
 #[tauri::command]
-fn tinker_run(code: &str, path: String) -> String {
-    let path = PathBuf::from(path);
-    let res = tinker::run(code.to_string(), path);
-    match res {
-        Ok(result) => result,
-        Err(err) => err.to_string(),
-    }
+fn search_php_bin(some: &str) -> String {
+    println!("You are serchig php bin! {}", some);
+    php::search("/opt/homebrew/opt").join("\n")
 }
 
 fn main() {
@@ -39,8 +40,7 @@ fn main() {
             }
             Ok(())
         })
-        .invoke_handler(tauri::generate_handler![greet])
-        .invoke_handler(tauri::generate_handler![tinker_run])
+        .invoke_handler(tauri::generate_handler![search_php_bin, tinker_run])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
 }

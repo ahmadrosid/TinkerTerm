@@ -12,15 +12,14 @@
   "tauri": {
     "allowlist": {
       "all": true,
-      "shell": {
+      "fs": {
         "all": true,
-        "scope": [
-          {
-            "name": "php",
-            "cmd": "php",
-            "args": ["artisan", { "validator": "\\S+" }]
-          }
-        ]
+        "readFile": true,
+        "writeFile": true,
+        "scope": ["$APPCONFIG/*"]
+      },
+      "path": {
+        "all": true
       }
     },
     "bundle": {

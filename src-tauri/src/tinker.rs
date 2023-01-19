@@ -2,7 +2,7 @@ use std::io::Write;
 use std::path::PathBuf;
 use std::process::{Command, Stdio};
 
-pub fn run(code: String, path: PathBuf) -> Result<String, Box<dyn std::error::Error>> {
+pub fn run(code: String, path: PathBuf, env: &str) -> Result<String, Box<dyn std::error::Error>> {
     let command = Command::new("php")
         .stdin(Stdio::piped())
         .stderr(Stdio::piped())
@@ -10,6 +10,7 @@ pub fn run(code: String, path: PathBuf) -> Result<String, Box<dyn std::error::Er
         .current_dir(path.clone())
         .arg("artisan")
         .arg("tinker")
+        .env("PATH", env)
         .spawn();
 
     if let Err(err) = command {

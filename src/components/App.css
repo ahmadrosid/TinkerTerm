@@ -1,0 +1,14 @@
+.container {
+  display: grid;
+  grid-template-columns: 45px 1fr;
+  min-height: 100vh;
+}
+
+.container nav {
+  border-right: 1px solid #3B4252;
+}
+
+.main {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}

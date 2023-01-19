@@ -15,32 +15,18 @@
   overflow: hidden;
 }
 
-.main {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-}
-
-.container {
-  display: grid;
-  grid-template-columns: 45px 1fr;
-}
-
-.container nav {
-  border-right: 1px solid #3B4252;
-}
-
 input,
 button {
   border-radius: 8px;
   border: 1px solid transparent;
   padding: 0.6em 1.2em;
-  font-size: 1em;
+  font-size: .9em;
   font-weight: 500;
   font-family: inherit;
   color: #0f0f0f;
   background-color: #ffffff;
   transition: border-color 0.25s;
-  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.082);
 }
 
 button {
@@ -60,6 +46,8 @@ pre {
   font-size: 14px;
   overflow: auto;
   max-height: 95vh;
+  white-space: pre-wrap;
+  word-break: break-all
 }
 
 #greet-input {
