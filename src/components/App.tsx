@@ -1,4 +1,4 @@
-import { useLayoutEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { invoke } from "@tauri-apps/api/tauri";
 import { open } from '@tauri-apps/api/dialog';
 import { appDataDir } from '@tauri-apps/api/path';
@@ -22,18 +22,18 @@ function App() {
   const monacoEditor = useRef<monaco.editor.IStandaloneCodeEditor | null>(null);
   const [res, setRes] = useState<string>("");
   const [folder, setFolder] = useState<string>("/Users/ahmadrosid/bitbucket.com/splade");
-  const [env, writeFileContent] = useLocalStorage('config/php-bin.conf');
+  const [phpBin, writeFileContent] = useLocalStorage('config/php-bin.conf');
   const [isOpenDialog, setIsOpenDialog] = useState<boolean>(false);
   const [phpBinOptions, setPhpBinOptions] = useState<string[]>([]);
 
   async function runTinker() {
-    if (env === "") {
+    if (phpBin === "") {
       setRes("Please set php bin env!");
       return
     }
     setRes("");
     try {
-      let res = await invoke('tinker_run', { code: monacoEditor.current?.getValue(), path: folder, env: env }) as string;
+      let res = await invoke('tinker_run', { code: monacoEditor.current?.getValue(), path: folder }) as string;
       setRes(res);
     } catch (e) {
       setRes(e as string)
@@ -70,23 +70,23 @@ function App() {
     writeFileContent(option);
   }
 
-  const executeAction: monaco.editor.IActionDescriptor = {
-    id: "run-code",
-    label: "Run Code",
-    contextMenuOrder: 0,
-    contextMenuGroupId: "navigation",
-    keybindings: [
-      KeyMod.CtrlCmd | KeyCode.Enter,
-    ],
-    run: runTinker,
-  }
-
-  useLayoutEffect(() => {
+  useEffect(() => {
     if (monacoEditor.current !== null) return;
 
     loader.init().then(monaco => {
       const wrapper = document.getElementById("editor");
       if (wrapper && monacoEditor.current === null) {
+        const executeAction: monaco.editor.IActionDescriptor = {
+          id: "run-code",
+          label: "Run Code",
+          contextMenuOrder: 0,
+          contextMenuGroupId: "navigation",
+          keybindings: [
+            KeyMod.CtrlCmd | KeyCode.Enter,
+          ],
+          run: runTinker,
+        }
+
         wrapper.style.minHeight = "800px";
         monaco.editor.defineTheme("nord", nordTheme as monaco.editor.IStandaloneThemeData);
         monaco.editor.addEditorAction(executeAction)
@@ -107,7 +107,7 @@ function App() {
         monacoEditor.current = editor;
       }
     });
-  }, [])
+  }, [monacoEditor])
 
   return (
     <>
@@ -132,8 +132,8 @@ function App() {
           <div id="editor"></div>
           <div className="column-3" style={{ paddingLeft: "1em", overflow: "auto" }}>
             <div>
-              {!env && <p>Please select your PHP binary.</p>}
-              {env && <p>PHP Bin: {env}</p>}
+              {!phpBin && <p>Please select your PHP binary.</p>}
+              {phpBin && <p>PHP Bin: {phpBin}</p>}
               <p>{ "Project folder: " + folder || "Please select your project folder!"}</p>
             </div>
             <p>
