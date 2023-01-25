@@ -10,11 +10,11 @@ import { KeyCode, KeyMod } from "monaco-editor"
 loader.config({ monaco });
 
 import "./App.css";
-import nordTheme from "../utils/nord";
-import phpTokenizer from "../utils/php-tokenizer";
-import useLocalStorage from "../hooks/useLocalStorage";
-import SettingIcon from "../icons/setting";
-import DialogChoice from "./DialogChoice";
+import nordTheme from "../../utils/nord";
+import phpTokenizer from "../../utils/php-tokenizer";
+import useLocalStorage from "../../hooks/useLocalStorage";
+import SettingIcon from "../../icons/setting";
+import DialogChoice from "../dialog/DialogChoice";
 
 type SetFolderFunc = (path: string) => Promise<void>;
 
