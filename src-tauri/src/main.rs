@@ -27,7 +27,7 @@ fn tinker_run(app_handle: tauri::AppHandle, code: String, path: String) -> Strin
 
 #[tauri::command]
 fn search_php_bin(some: &str) -> String {
-    println!("You are serchig php bin! {}", some);
+    // TODO: accept custom folder path to search php bin file
     php::search("/opt/homebrew/opt").join("\n")
 }
 
