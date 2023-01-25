@@ -1,5 +1,4 @@
 import { useRef } from "react"
-import "./dialog.css"
 
 type SelectOptions = { options: string[], isOpenDialog: boolean, onSubmit: (option?: string) => void }
 
