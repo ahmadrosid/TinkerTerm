@@ -50,11 +50,6 @@ pre {
   word-break: break-all
 }
 
-#greet-input {
-  margin-right: 5px;
-  min-width: 300px;
-}
-
 @media (prefers-color-scheme: dark) {
   :root {
     color: #f6f6f6;

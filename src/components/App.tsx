@@ -65,9 +65,9 @@ function App() {
     }
   }
 
-  const onSubmitDialog = (option: string) => {
+  const onSubmitDialog = (option?: string) => {
     setIsOpenDialog(false)
-    writeFileContent(option);
+    if (option) writeFileContent(option);
   }
 
   useEffect(() => {

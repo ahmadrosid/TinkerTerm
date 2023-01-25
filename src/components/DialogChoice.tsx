@@ -1,7 +1,7 @@
 import { useRef } from "react"
 import "./Dialog.css"
 
-type SelectOptions = { options: string[], isOpenDialog: boolean, onSubmit: (option: string) => void }
+type SelectOptions = { options: string[], isOpenDialog: boolean, onSubmit: (option?: string) => void }
 
 export default function DialogChoice({ options, isOpenDialog, onSubmit }: SelectOptions) {
     const selectRef = useRef<HTMLSelectElement>(null);
@@ -23,7 +23,7 @@ export default function DialogChoice({ options, isOpenDialog, onSubmit }: Select
                     <div className="dialog-footer">
                         <div>
                             <button onClick={clickSubmit} className="dialog-btn-submit">Submit</button>
-                            <button className="dialog-btn-cancel">Cancel</button>
+                            <button onClick={() => onSubmit()} className="dialog-btn-cancel">Cancel</button>
                         </div>
                     </div>
                 </div>
