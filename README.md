@@ -23,7 +23,7 @@ Currently, I haven't tested it on any platform other than Mac M1; adjust this pa
 
 ## Demo
 
-![demo](/demo.png)
+![demo](/demo-app.png)
 
 ## How to install?
 
