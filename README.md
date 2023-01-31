@@ -13,3 +13,32 @@ Some of the features of TinkerTerm:
 - 🕵️‍♂️ Advanced debugging and exploration tools
 - 🔍 Built-in support for Laravel's Eloquent ORM
 
+## System Requirements
+
+- Rust >= 1.64.0 
+- Cargo >= 1.64.0
+- NodeJS >= v18.x.x
+
+Currently I haven't test it on other platform than Mac M1, adjust this path search for php binary on your platform [here](https://github.com/ahmadrosid/TinkerTerm/blob/main/src-tauri/src/main.rs#L31)
+
+## How to install?
+
+Clone this project.
+```bash
+git clone https://github.com/ahmadrosid/TinkerTerm.git
+```
+
+Install all dependencies.
+```bash
+npm install
+```
+
+Build the project.
+```bash
+npm run tauri build
+```
+
+If you are on M1 MacOS.
+```bash
+npm run tauri build --target aarch64-apple-darwin
+```
