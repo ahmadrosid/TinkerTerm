@@ -1,7 +1,7 @@
 # TinkerTerm
 
 <p align="center">
-    <img src="TinkerTerm.png" alt="TinkerTerm" width="200"/>
+    <img src="TinkerTerm.png" alt="TinkerTerm" width="150"/>
 </p>
 
 TinkerTerm is the desktop application for interacting with your Laravel projects. This powerful tool allows you to speed up your Laravel development with an intuitive and user-friendly interface for executing arbitrary PHP code, debugging, and exploring your data.
@@ -42,3 +42,7 @@ If you are on M1 MacOS.
 ```bash
 npm run tauri build --target aarch64-apple-darwin
 ```
+
+## Contribution
+
+Please make any PR if you want to add more additional tools or improve the code; currently, I don't have any idea what feature to be added next.
