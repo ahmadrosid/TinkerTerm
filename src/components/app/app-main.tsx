@@ -98,11 +98,11 @@ export default function App() {
         </nav>
         <div className="main">
           <Editor onInitEditor={(editor) => setCurentEditor(editor)} runCode={runTinker} />
-          <div className="column-3" style={{ paddingLeft: "1em", overflow: "auto" }}>
-            <div>
+          <div className="column-3 result-container">
+            <div className="result-header">
               {!phpBin && <p>Please select your PHP binary.</p>}
-              {phpBin && <p>PHP Bin: {phpBin}</p>}
-              <p>{ "Project folder: " + folder || "Please select your project folder!"}</p>
+              {phpBin && <p>PHP binary folder : {phpBin}</p>}
+              <p>{ "Project folder : " + folder || "Please select your project folder!"}</p>
             </div>
             <p>
               <pre>{res}</pre>
