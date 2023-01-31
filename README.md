@@ -19,7 +19,7 @@ Some of the features of TinkerTerm:
 - Cargo >= 1.64.0
 - NodeJS >= v18.x.x
 
-Currently I haven't test it on other platform than Mac M1, adjust this path search for php binary on your platform [here](https://github.com/ahmadrosid/TinkerTerm/blob/main/src-tauri/src/main.rs#L31)
+Currently, I haven't tested it on any platform other than Mac M1; adjust this path search for the PHP binary on your platform [here](https://github.com/ahmadrosid/TinkerTerm/blob/main/src-tauri/src/main.rs#L31).
 
 ## How to install?
 
