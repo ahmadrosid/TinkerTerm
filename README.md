@@ -21,6 +21,10 @@ Some of the features of TinkerTerm:
 
 Currently, I haven't tested it on any platform other than Mac M1; adjust this path search for the PHP binary on your platform [here](https://github.com/ahmadrosid/TinkerTerm/blob/main/src-tauri/src/main.rs#L31).
 
+## Demo
+
+![demo](/demo.png)
+
 ## How to install?
 
 Clone this project.
